@@ -17,8 +17,12 @@ class LinkedList:
         # create a node with value
         new_node = Node(value)
         # add Node to the end of the list
-        self.tail.next = new_node
-        self.tail = new_node
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
         self.lenght += 1
         pass
 
