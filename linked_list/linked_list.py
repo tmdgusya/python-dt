@@ -26,6 +26,28 @@ class LinkedList:
         self.lenght += 1
         pass
 
+    def pop(self):
+        # if linked list is empty
+        if self.head is None:
+            return None
+        
+        # O(N)
+        prev = self.head
+        cur = self.head
+
+        while cur.next is not None:
+            prev = cur
+            cur = cur.next
+        
+        self.tail = prev
+        self.tail.next = None
+        self.lenght -= 1
+
+        if self.lenght == 0:
+            self.head = None
+            self.tail = None
+        return cur
+
     def prepend(self, value):
         # create a node with value
 
@@ -48,4 +70,8 @@ class LinkedList:
 if __name__ == "__main__":
     my_linked_list = LinkedList(4)
     my_linked_list.append(5)
+    print("Value : ", my_linked_list.pop().value)
+    print("Value : ", my_linked_list.pop().value)
+    print("Value : ", my_linked_list.pop())
     my_linked_list.print_list()
+
